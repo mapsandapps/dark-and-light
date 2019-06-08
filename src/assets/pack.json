@@ -3,13 +3,13 @@
     "files": [
       {
         "type": "tilemapTiledJSON",
-        "key": "levelMap",
-        "url": "src/assets/maps/levelMap.json"
+        "key": "maze",
+        "url": "src/assets/maps/maze.json"
       },
       {
         "type": "image",
         "key": "tiles",
-        "url": "src/assets/tiles/tiles.png"
+        "url": "src/assets/maze.png"
       },
       {
         "type": "image",
