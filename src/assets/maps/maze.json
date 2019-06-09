@@ -155,12 +155,12 @@
                         {
                          "name":"preventRight",
                          "type":"bool",
-                         "value":false
-                        }, 
+                         "value":true
+                        },
                         {
                          "name":"preventUp",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
