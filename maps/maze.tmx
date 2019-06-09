@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="3">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="4">
  <tileset firstgid="1" name="maze" tilewidth="64" tileheight="64" tilecount="16" columns="4">
   <image source="../src/assets/maze.png" trans="eebdfa" width="256" height="256"/>
   <tile id="0">
@@ -30,8 +30,8 @@
    <properties>
     <property name="preventDown" type="bool" value="false"/>
     <property name="preventLeft" type="bool" value="true"/>
-    <property name="preventRight" type="bool" value="false"/>
-    <property name="preventUp" type="bool" value="true"/>
+    <property name="preventRight" type="bool" value="true"/>
+    <property name="preventUp" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="4">
@@ -133,7 +133,7 @@
  </tileset>
  <layer id="1" name="Map" width="10" height="10">
   <data encoding="csv">
-1,2,8,8,6,1,5,15,8,5,
+1,2,8,8,5,1,5,15,8,5,
 4,13,5,3,13,9,14,2,8,6,
 4,1,9,14,5,1,9,11,1,9,
 4,4,1,9,4,11,1,5,13,7,
@@ -141,7 +141,7 @@
 4,13,9,13,8,9,4,1,5,4,
 13,8,5,1,8,8,9,4,4,4,
 3,1,9,14,8,5,1,9,4,4,
-4,13,5,4,15,9,4,4,11,4,
+4,13,5,4,15,9,4,3,11,4,
 13,8,9,13,8,5,11,13,8,9
 </data>
  </layer>
@@ -149,8 +149,6 @@
   <object id="1" name="Start" x="288" y="32">
    <point/>
   </object>
-  <object id="2" name="Finish" x="352" y="608">
-   <point/>
-  </object>
+  <object id="3" name="Finish" x="320" y="576" width="64" height="64"/>
  </objectgroup>
 </map>
