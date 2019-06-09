@@ -24,8 +24,8 @@ npm run build
 
 Builds to `index.html` and `dist/bundle.js`
 
-# To configure
+# Extrude tiles
 
-* Add name, description, and author's name & email to package.json
-* Provide a title in index.html
-* Add any assets to pack.json; remove the example ones
+```
+tile-extruder --tileWidth 64 --tileHeight 64 --input ./src/assets/maze.png --output ./src/assets/maze-extruded.png
+```

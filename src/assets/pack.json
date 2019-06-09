@@ -9,7 +9,7 @@
       {
         "type": "image",
         "key": "tiles",
-        "url": "src/assets/maze.png"
+        "url": "src/assets/maze-extruded.png"
       },
       {
         "type": "image",
