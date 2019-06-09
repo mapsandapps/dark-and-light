@@ -149,6 +149,6 @@
   <object id="1" name="Start" x="288" y="32">
    <point/>
   </object>
-  <object id="3" name="Finish" x="320" y="576" width="64" height="64"/>
+  <object id="3" name="Finish" x="328" y="632" width="48" height="8"/>
  </objectgroup>
 </map>

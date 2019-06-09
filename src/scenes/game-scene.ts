@@ -1,13 +1,15 @@
+import { Exit } from '../objects/exit'
 import { Player } from '../objects/player'
 
 export class GameScene extends Phaser.Scene {
   private backgroundLayer: Phaser.Tilemaps.StaticTilemapLayer
-  private debug: boolean
+  private debug: boolean = true
   private layer: Phaser.Tilemaps.StaticTilemapLayer
   private map: Phaser.Tilemaps.Tilemap
   private tileset: Phaser.Tilemaps.Tileset
   private walls: Phaser.Physics.Arcade.StaticGroup
 
+  private exit: Exit
   private player: Player
 
   constructor() {
@@ -19,7 +21,7 @@ export class GameScene extends Phaser.Scene {
   init(): void {}
 
   private createWall(x, y, width, height): void {
-    this.walls.add(new Phaser.GameObjects.Rectangle(this, x, y, width, height, 0xf00000, 1).setOrigin(0, 0), this.debug)
+    this.walls.add(new Phaser.GameObjects.Rectangle(this, x, y, width, height, 0x00f000, 1).setOrigin(0, 0), this.debug)
   }
 
   private addWallToTile(tile): void {
@@ -47,8 +49,6 @@ export class GameScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.debug = true
-
     this.map = this.make.tilemap({ key: 'maze' })
 
     this.tileset = this.map.addTilesetImage('maze', 'tiles', 64, 64, 0, 0)
@@ -61,6 +61,7 @@ export class GameScene extends Phaser.Scene {
     this.addWalls()
 
     this.physics.add.collider(this.player, this.walls)
+    this.physics.add.collider(this.player, this.exit, this.exitCallback, null, this)
 
     this.cameras.main.startFollow(this.player)
   }
@@ -90,6 +91,15 @@ export class GameScene extends Phaser.Scene {
           y: object.y,
           key: 'player'
         })
+      } else if (object.name === 'Finish') {
+        this.exit = new Exit({
+          scene: this,
+          x: object.x,
+          y: object.y,
+          width: object.width,
+          height: object.height,
+          debug: this.debug
+        })
       }
     })
   }
@@ -97,5 +107,14 @@ export class GameScene extends Phaser.Scene {
   private exitToWinScene(): void {
     this.scene.stop()
     this.scene.get('WinScene').scene.start()
+  }
+
+  private exitCallback(): void {
+    this.cameras.main.fadeOut(1000)
+    this.time.addEvent({
+      delay: 1000,
+      callback: this.exitToWinScene,
+      callbackScope: this
+    })
   }
 }

@@ -31,15 +31,15 @@
                  "y":32
                 }, 
                 {
-                 "height":64,
+                 "height":8,
                  "id":3,
                  "name":"Finish",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":64,
-                 "x":320,
-                 "y":576
+                 "width":48,
+                 "x":328,
+                 "y":632
                 }],
          "opacity":1,
          "type":"objectgroup",
