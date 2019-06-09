@@ -2,8 +2,7 @@ import { Exit } from '../objects/exit'
 import { Player } from '../objects/player'
 
 export class GameScene extends Phaser.Scene {
-  private backgroundLayer: Phaser.Tilemaps.StaticTilemapLayer
-  private debug: boolean = true
+  private debug: boolean = false
   private layer: Phaser.Tilemaps.StaticTilemapLayer
   private map: Phaser.Tilemaps.Tilemap
   private tileset: Phaser.Tilemaps.Tileset
@@ -48,11 +47,28 @@ export class GameScene extends Phaser.Scene {
     })
   }
 
+  private addFogOfWar(): void {
+    interface GameConfig {
+      width: number
+      height: number
+    }
+
+    let gameConfig = this.game.config as GameConfig
+
+    this.make.image({
+      x: gameConfig.width / 2,
+      y: gameConfig.height / 2,
+      key: 'mask',
+      add: true
+    })
+      .setBlendMode('MULTIPLY')
+      .setScrollFactor(0)
+  }
+
   create(): void {
     this.map = this.make.tilemap({ key: 'maze' })
 
     this.tileset = this.map.addTilesetImage('maze', 'tiles', 64, 64, 1, 2)
-    // this.backgroundLayer = this.map.createStaticLayer('Background', this.tileset, 0, 0)
     this.layer = this.map.createStaticLayer('Map', this.tileset, 0, 0)
 
     this.convertObjects()
@@ -64,6 +80,8 @@ export class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.exit, this.exitCallback, null, this)
 
     this.cameras.main.startFollow(this.player)
+
+    this.addFogOfWar()
   }
 
   update(): void {

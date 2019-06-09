@@ -7,7 +7,7 @@ import { WinScene } from './scenes/win-scene';
 const config: GameConfig = {
   width: 800,
   height: 600,
-  type: Phaser.AUTO,
+  type: Phaser.WEBGL,
   parent: 'game',
   scene: [MenuScene, GameScene, WinScene],
   input: {
