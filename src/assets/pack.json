@@ -12,9 +12,13 @@
         "url": "src/assets/maze-extruded.png"
       },
       {
-        "type": "image",
-        "key": "player",
-        "url": "./src/assets/player.png"
+        "type": "spritesheet",
+        "key": "character",
+        "url": "./src/assets/character.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
       },
       {
         "type": "image",

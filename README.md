@@ -29,3 +29,8 @@ Builds to `index.html` and `dist/bundle.js`
 ```
 tile-extruder --tileWidth 64 --tileHeight 64 --input ./src/assets/maze.png --output ./src/assets/maze-extruded.png
 ```
+
+# Credit
+
+* Map tiles by me
+* Character sprites from the [Universal LPC Spritesheet Character Generator](http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)

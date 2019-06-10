@@ -1,6 +1,8 @@
 import { Exit } from '../objects/exit'
 import { Player } from '../objects/player'
 
+import { createAnims } from '../helpers/anims'
+
 export class GameScene extends Phaser.Scene {
   private debug: boolean = false
   private layer: Phaser.Tilemaps.StaticTilemapLayer
@@ -71,6 +73,8 @@ export class GameScene extends Phaser.Scene {
     this.tileset = this.map.addTilesetImage('maze', 'tiles', 64, 64, 1, 2)
     this.layer = this.map.createStaticLayer('Map', this.tileset, 0, 0)
 
+    createAnims(this, 'character')
+
     this.convertObjects()
 
     this.walls = this.physics.add.staticGroup()
@@ -107,7 +111,7 @@ export class GameScene extends Phaser.Scene {
           scene: this,
           x: object.x,
           y: object.y,
-          key: 'player'
+          key: 'character'
         })
       } else if (object.name === 'Finish') {
         this.exit = new Exit({
