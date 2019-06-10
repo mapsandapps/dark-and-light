@@ -115,14 +115,14 @@ export class GameScene extends Phaser.Scene {
           x: object.x,
           y: object.y,
           width: object.width,
-          height: object.height,
-          debug: this.debug
+          height: object.height
         })
       }
     })
   }
 
   private exitToWinScene(): void {
+    this.player.setActive(false)
     this.scene.stop()
     this.scene.get('WinScene').scene.start()
   }

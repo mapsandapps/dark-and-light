@@ -4,7 +4,7 @@
       {
         "type": "tilemapTiledJSON",
         "key": "maze",
-        "url": "src/assets/maps/maze.json"
+        "url": "src/assets/maps/maze2.json"
       },
       {
         "type": "image",

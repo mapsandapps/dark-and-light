@@ -24,7 +24,15 @@ export class MenuScene extends Phaser.Scene {
       this.add.text(
         this.sys.canvas.width / 2,
         this.sys.canvas.height / 2 - 60,
-        'GAME'
+        'DARK & LIGHT'
+      ).setOrigin(0.5, 0.5)
+    )
+
+    this.texts.push(
+      this.add.text(
+        this.sys.canvas.width / 2,
+        this.sys.canvas.height / 2,
+        'PRESS X TO PLAY'
       ).setOrigin(0.5, 0.5)
     )
 
@@ -32,7 +40,7 @@ export class MenuScene extends Phaser.Scene {
       this.add.text(
         this.sys.canvas.width / 2,
         this.sys.canvas.height / 2 + 60,
-        'PRESS X TO PLAY'
+        'ARROW KEYS FOR CONTROLS'
       ).setOrigin(0.5, 0.5)
     )
   }
