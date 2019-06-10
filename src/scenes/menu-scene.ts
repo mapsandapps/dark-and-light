@@ -15,10 +15,6 @@ export class MenuScene extends Phaser.Scene {
     this.startKey.isDown = false
   }
 
-  preload(): void {
-    this.load.pack('preload', './src/assets/pack.json', 'preload')
-  }
-
   create(): void {
     this.texts.push(
       this.add.text(
