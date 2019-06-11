@@ -71,9 +71,7 @@ export class GameScene extends Phaser.Scene {
   create(): void {
     this.sound.pauseOnBlur = false // TODO: change to true
     this.music = this.sound.add('music')
-    this.music.play(null, {
-      loop: true // FIXME: not working
-    })
+    this.music.play()
 
     this.map = this.make.tilemap({ key: 'maze' })
 

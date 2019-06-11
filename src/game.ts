@@ -1,5 +1,6 @@
 import 'phaser';
 import { BootScene } from './scenes/boot-scene'
+import { CreditsScene } from './scenes/credits-scene'
 import { GameScene } from './scenes/game-scene';
 import { MenuScene } from './scenes/menu-scene';
 import { WinScene } from './scenes/win-scene';
@@ -10,7 +11,7 @@ const config: GameConfig = {
   height: 600,
   type: Phaser.WEBGL,
   parent: 'game',
-  scene: [BootScene, MenuScene, GameScene, WinScene],
+  scene: [BootScene, CreditsScene, GameScene, MenuScene, WinScene],
   input: {
     keyboard: true
   },
