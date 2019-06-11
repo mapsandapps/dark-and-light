@@ -24,6 +24,11 @@
         "type": "image",
         "key": "mask",
         "url": "./src/assets/fog-of-war.png"
+      },
+      {
+        "type": "audio",
+        "key": "music",
+        "url": "./src/assets/audio/city-of-rain-scott-elliottogg.ogg"
       }
     ]
   }

@@ -7,6 +7,7 @@ export class GameScene extends Phaser.Scene {
   private debug: boolean = false
   private layer: Phaser.Tilemaps.StaticTilemapLayer
   private map: Phaser.Tilemaps.Tilemap
+  private music: Phaser.Sound.BaseSound
   private tileset: Phaser.Tilemaps.Tileset
   private walls: Phaser.Physics.Arcade.StaticGroup
 
@@ -68,6 +69,12 @@ export class GameScene extends Phaser.Scene {
   }
 
   create(): void {
+    this.sound.pauseOnBlur = false // TODO: change to true
+    this.music = this.sound.add('music')
+    this.music.play(null, {
+      loop: true // FIXME: not working
+    })
+
     this.map = this.make.tilemap({ key: 'maze' })
 
     this.tileset = this.map.addTilesetImage('maze', 'tiles', 64, 64, 1, 2)
@@ -90,16 +97,6 @@ export class GameScene extends Phaser.Scene {
 
   update(): void {
     this.player.update()
-  }
-
-  private gameLost(): void {
-    this.add.text(
-      this.player.x,
-      this.player.y,
-      'Oh no!\nYou lost!', {
-        align: 'center'
-      }
-    ).setOrigin(0.5, 0.5)
   }
 
   private convertObjects(): void {
@@ -126,6 +123,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private exitToWinScene(): void {
+    this.music.stop()
     this.player.setActive(false)
     this.scene.stop()
     this.scene.get('WinScene').scene.start()

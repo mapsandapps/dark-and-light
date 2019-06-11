@@ -34,3 +34,4 @@ tile-extruder --tileWidth 64 --tileHeight 64 --input ./src/assets/maze.png --out
 
 * Map tiles by me
 * Character sprites from the [Universal LPC Spritesheet Character Generator](http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)
+* Music by [Scrabbit](https://opengameart.org/content/city-of-rain)
