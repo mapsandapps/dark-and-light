@@ -12,6 +12,7 @@ export class Player extends Phaser.GameObjects.Sprite {
   }
 
   private initSprite() {
+    this.active = true
     this.health = 1
     this.speed = 200
 
@@ -30,7 +31,9 @@ export class Player extends Phaser.GameObjects.Sprite {
     if (this.active) {
       this.handleInput()
     } else {
-      this.body.setVelocity(0)
+      if (this.body) {
+        this.body.setVelocity(0)
+      }
     }
   }
 

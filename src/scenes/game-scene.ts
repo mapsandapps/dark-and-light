@@ -2,6 +2,7 @@ import { Exit } from '../objects/exit'
 import { Player } from '../objects/player'
 
 import { createAnims } from '../helpers/anims'
+import { advanceLevel, currentLevel } from '../helpers/levels'
 
 export class GameScene extends Phaser.Scene {
   private debug: boolean = false
@@ -21,6 +22,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   init(): void {}
+
+  preload(): void {
+    this.load.tilemapTiledJSON(`${currentLevel}`, `./src/assets/maps/sm-maze${currentLevel}.json`)
+  }
 
   private createWall(x, y, width, height): void {
     this.walls.add(new Phaser.GameObjects.Rectangle(this, x, y, width, height, 0x00f000, 1).setOrigin(0, 0), this.debug)
@@ -75,7 +80,7 @@ export class GameScene extends Phaser.Scene {
     })
     this.music.play()
 
-    this.map = this.make.tilemap({ key: 'maze' })
+    this.map = this.make.tilemap({ key: `${currentLevel}` })
 
     this.tileset = this.map.addTilesetImage('maze', 'tiles', 64, 64, 1, 2)
     this.layer = this.map.createStaticLayer('Map', this.tileset, 0, 0)
@@ -122,6 +127,15 @@ export class GameScene extends Phaser.Scene {
     })
   }
 
+  private finishLevel(): void {
+    advanceLevel()
+    if (currentLevel) {
+      this.scene.restart()
+    } else {
+      this.exitToWinScene()
+    }
+  }
+
   private exitToWinScene(): void {
     this.music.stop()
     this.player.setActive(false)
@@ -133,7 +147,7 @@ export class GameScene extends Phaser.Scene {
     this.cameras.main.fadeOut(1000)
     this.time.addEvent({
       delay: 1000,
-      callback: this.exitToWinScene,
+      callback: this.finishLevel,
       callbackScope: this
     })
   }

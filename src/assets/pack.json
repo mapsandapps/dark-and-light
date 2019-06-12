@@ -2,11 +2,6 @@
   "preload": {
     "files": [
       {
-        "type": "tilemapTiledJSON",
-        "key": "maze",
-        "url": "src/assets/maps/maze2.json"
-      },
-      {
         "type": "image",
         "key": "tiles",
         "url": "src/assets/maze-extruded.png"
